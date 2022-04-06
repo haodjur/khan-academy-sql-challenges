@@ -1,0 +1,15 @@
+/** Favorite Books: 
+The Kite Runner(5)
+The Book Thief (4)
+Crying in H Mart (4) 
+Hood Feminism (5) 
+**/
+
+CREATE TABLE books (id INTEGER PRIMARY KEY, name TEXT, rating INTEGER); 
+
+INSERT INTO books VALUES (1, "The Kite Runner", 5);
+INSERT INTO books VALUES (2, "The Book Thief", 4); 
+INSERT INTO books VALUES (3, "Crying in H Mart", 4);
+INSERT INTO books VALUES (4, "Hood Feminism", 5);
+
+SELECT * FROM books;
