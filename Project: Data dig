@@ -1,0 +1,66 @@
+/* chelsea football club roster 
+source by https://www.chelseafc.com/en/teams/first-team?pageTab=players stats as of 02/22 */
+
+CREATE TABLE chelsea_fc (
+    id  INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    age INTEGER, 
+    nationality TEXT, 
+    jersey_number INTEGER, 
+    preferred_foot TEXT, 
+    position TEXT, 
+    yellow_cards INTEGER, 
+    value INTEGER);
+    
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Edouard Mendy", 29, "Senegal", 16, "right", "goal keeper", 0, 44.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Cesar Azpilicueta", 31, "Spain", 28, "right", "right back", 1, 25);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Andreas Christensen", 25, "Denmark", 4, "right", "center back", 2, 38);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Thiago da Silva", 36, "Brazil", 6, "right", "center back", 3, 9.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Antonio Rudiger", 28, "Germany", 2, "right", "center back", 7, 51);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Marcos Mendoza", 30, "Spain", 3, "left", "left back", 7, 18);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("N'Golo Kante", 30, "France", 7, "right", "center midfield", 1, 100);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Jorginho", 29, "Italy", 5, "right", "center midfield", 5, 52.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Mason Mount", 22, "England", 19, "right", "right winger", 2, 58.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Romelu Menama", 28, "Belgium", 9, "left", "striker", 0, 81.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Christian Pulisic", 22, "USA", 10, "right", "right winger", 1, 49);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Hakim Ziyech", 28, "Morocco", 22, "left", "right winger", 3, 36.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Timo Werner", 25, "Germany", 11, "right", "left winger", 1, 48.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Kai Havertz", 22, "Germany", 29, "left", "center forward", 1, 85.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Mateo Kovacic", 27, "Croatia", 8, "right", "center midfield", 4, 41.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Ruben Loftus-Cheek", 25, "England", 12, "right", "right midfield", 2, 7.5);    
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Trevoh Chalobah", 21, "England", 14, "right", "center midfield", 1, 11);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Kepa Revuelta", 26, "Spain", 1, "right", "goal keeper", 1, 19);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Callum Hudson-Odoi", 20, "England", 20, "right", "left winger", 2, 31);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Saul Esclapez", 26, "Spain", 17, "left", "center midfield", 3, 30);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Ross Barkley", 27, "England", 18, "right", "center midfield", 0, 15);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Reece James", 21, "England", 24, "right", "right back", 5, 43.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Ben Chilwell", 24, "England", 21, "left", "left back", 0, 46);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Malang Sarr", 22, "France", 31, "left", "left back", 2, 7.5);
+INSERT INTO chelsea_fc (name, age, nationality, jersey_number, preferred_foot, position, yellow_cards, value) VALUES ("Marcus Bettinelli", 29, "England", 13, "right", "goal keeper", 0, 1.6);
+
+
+SELECT * FROM chelsea_fc;
+
+/* the average, max, and min values in the data */
+SELECT AVG(age) FROM chelsea_fc; 
+SELECT MAX(value) FROM chelsea_fc; 
+SELECT MIN(age) FROM chelsea_fc; 
+
+/* using HAVING */
+SELECT name, SUM(value) AS market_value_in_millions FROM chelsea_fc GROUP BY name HAVING value > 75; 
+
+/* using CASE */
+SELECT name, age,
+    CASE 
+        WHEN age <= 24 THEN "The player is young" 
+        WHEN age >= 25 THEN "The player is at their peak" 
+        ELSE "The player is twilight of their career" 
+    END AS career_point
+    FROM chelsea_fc; 
+        
+
+/* using AND/OR */
+SELECT * FROM chelsea_fc WHERE age > 25 AND nationality = "England"; 
+SELECT name FROM chelsea_fc WHERE nationality = "Spain" OR value > 30 OR preferred_foot = "right"; 
+
+
