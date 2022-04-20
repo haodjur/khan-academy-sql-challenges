@@ -1,0 +1,64 @@
+/* famous authors' fullname, age, and their education */
+
+CREATE TABLE authors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    age INTEGER,
+    education TEXT);
+    
+INSERT INTO authors (fullname, age, education)
+VALUES ("Ocean Vuong", 33, "New York University");
+INSERT INTO authors (fullname, age, education)
+VALUES ("Amanda Gorman", 24, "Harvard College");
+INSERT INTO authors (fullname, age, education)
+VALUES ("Sally Rooney", 31, "Trinity College Dublin");
+INSERT INTO authors (fullname, age, education)
+VALUES ("Michelle Zauner", 32, "Bryn Mawr College");
+INSERT INTO authors (fullname, age, education)
+VALUES ("Jericho Brown", 45, "Dillard University");
+    
+/* authors' achievements */
+
+CREATE TABLE achievements (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    author_id INTEGER,
+    title TEXT,
+    award TEXT,
+    genre TEXT);
+    
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (1, "On Earth We're Brifely Gorgeous", "PEN/Faulkner Award for Fiction", "Epistolary novel");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (1, "The Tradition", "2020 Pulitzer Prize for Poetry", "Poetry");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (1, "On Earth We're Briefly Gorgeous", "National Book Awards 2019 for Fiction" ,"Epistolary novel");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (1, "Night Sky with Exit Wounds", "T.S. Eliot Prize in 2017", "Poetry");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (2, "The Hill We Climb", "Goodreads Choice Awards Best Poetry", "Poetry");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (4, "Crying in H Mart", "Goodreads Choice Awards Best Memoir & Autobiography" ,"Autobiography");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (3, "Normal People", "2018 Man Booker Prize", "Fiction");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (3, "Normal People", "2018 Waterstone's Book of the Year", "Fiction");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (3, "Normal People", "2018 Costa Book Awards", "Fiction");
+INSERT INTO achievements (author_id, title, award, genre)
+VALUES (3, "Normal People", "2019 Women's Prize for Fiction", "Fiction");
+
+
+SELECT * FROM authors; 
+SELECT * FROM achievements; 
+
+SELECT authors.fullname, achievements.award
+    FROM authors
+    JOIN achievements
+    ON achievements.author_id = authors.id;
+    
+SELECT authors.fullname, achievements.title, achievements.genre 
+    FROM authors 
+    JOIN achievements 
+    ON authors.id = achievements.author_id; 
+
+
