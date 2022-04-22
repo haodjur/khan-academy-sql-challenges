@@ -1,0 +1,25 @@
+/* What does the app's SQL look like? */
+CREATE TABLE workout (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    body TEXT,
+    workout_type TEXT,
+    location TEXT,
+    time_of_day TEXT, 
+    duration_in_mins INTEGER);
+    
+INSERT INTO workout (body, workout_type, location, time_of_day, duration_in_mins)
+VALUES ("full body", "cardio", "gym", "evening", 30);
+INSERT INTO workout (body, workout_type, location, time_of_day, duration_in_mins)
+VALUES ("full body", "yoga", "at home", "morning", 45);
+INSERT INTO workout (body, workout_type, location, time_of_day, duration_in_mins)
+VALUES ("legs", "running", "park", "evening", 60);
+INSERT INTO workout (body, workout_type, location, time_of_day, duration_in_mins)
+VALUES ("arms", "lifting", "at home", "evening", 30);
+
+SELECT * FROM workout; 
+
+UPDATE workout SET time_of_day = "afternoon" WHERE id = 2;
+SELECT * FROM workout;
+
+DELETE FROM workout WHERE id = 3;
+SELECT * FROM workout;
